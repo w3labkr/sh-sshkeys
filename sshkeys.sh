@@ -1,8 +1,4 @@
 #!/usr/bin/env sh
-#
-# Usage
-# chmod u+x ./sshkeys.sh
-# ./sshkeys.sh --username=<username> --usermail=<usermail@example.com>
 
 # abort on errors
 set -e
