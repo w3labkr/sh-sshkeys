@@ -16,10 +16,15 @@ You can download it from the official site.
 
 ## Usage
 
-Run from the directory where Git is installed.
+Set the execute permission for the file.
 
 ```sh
 $ chmod u+x ./sshkeys.sh
+```
+
+Run from the directory where Git is installed.
+
+```sh
 $ ./sshkeys.sh --username=<username> --usermail=<mail@example.com>
 ```
 
