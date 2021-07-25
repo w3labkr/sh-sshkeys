@@ -1,6 +1,6 @@
 # Managing Multiple SSH keys
 
-This script creates an ssh file and updates ssh settings and git remote source url. If the SSH key file already exists, only the git host address is modified.
+This script is an ssh key management script for multi-account users. If the SSH key file already exists, only the git host address is modified.
 
 ## Download
 
