@@ -35,14 +35,16 @@ if [ -z "$usermail" ]; then
   exit 0
 fi
 
-# Generate a ssh key.
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/${username}_id_rsa -C "$usermail" -N ''
+if [ ! -f ~/.ssh/${username}_id_rsa ]; then
+    # Generate a ssh key.
+    ssh-keygen -t rsa -b 4096 -f ~/.ssh/${username}_id_rsa -C "$usermail" -N ''
 
-# Ensure the ssh-agent is running.
-eval "$(ssh-agent -s)"
+    # Ensure the ssh-agent is running.
+    eval "$(ssh-agent -s)"
 
-# Add your SSH private key to the ssh-agent.
-ssh-add ~/.ssh/${username}_id_rsa
+    # Add your SSH private key to the ssh-agent.
+    ssh-add ~/.ssh/${username}_id_rsa
+fi
 
 # If the file does not exist, it creates a new file.
 if [ ! -f ~/.ssh/config ]; then
@@ -67,5 +69,6 @@ EOF
 # Modify the remote origin URL of git.
 sed -i.bak -E "s/(@|\/\/)($hostname)/\1$username.\2/p" .git/config
 
+# Print the SSH Key.
 echo
 cat ~/.ssh/${username}_id_rsa.pub
